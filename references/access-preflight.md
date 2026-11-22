@@ -14,3 +14,5 @@ ssh -o BatchMode=yes -o StrictHostKeyChecking=yes '<admin_user>@<node>' \
 ```
 
 Expect the selected login account and UID `0` on separate lines. Resolve any access or privilege escalation failures before configuring Slurm.
+
+After first boot or a reboot, use a bounded readiness check before the first Ansible configuration task. For example, use `ansible.builtin.wait_for_connection` with `timeout: 60`, `connect_timeout: 5`, and `sleep: 2` after the node's identity and address are verified. Capture the connection failure if readiness times out. For checks that delegate secret-handling tasks from multiple hosts to one controller, probe connectivity in a separate task so transport errors remain visible and serialize delegated access when simultaneous connections are unreliable.
