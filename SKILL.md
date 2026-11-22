@@ -9,6 +9,8 @@ description: Guide Slurm installation, configuration, and validation on existing
 
 Start with existing SSH-reachable Linux nodes and an administration machine. Use placeholders such as `<cluster_name>` for site-specific values.
 
+If the operator is still choosing Ubuntu for a fresh lab, evaluate the latest released LTS and its Slurm package candidate using the [version policy](references/version-policy.md).
+
 ## Workflow outline
 
 1. Confirm node roles, [SSH access and privilege escalation](references/access-preflight.md), stable name resolution, synchronized clocks, and consistent user and group IDs.
