@@ -18,6 +18,8 @@ Start with existing SSH-reachable Linux nodes and an administration machine. Use
 
 The outline describes the intended workflow. Lab-verified procedures will be added as they become available.
 
+For labs that simulate resource-based scheduling, choose compute nodes with different vCPU and RAM allocations when planning the lab. Before configuring Slurm, verify the CPU topology and usable memory inside each node. In production, derive each node's configuration from its installed hardware and any limits enforced by its runtime environment. For both environments, keep configured schedulable memory within the detected capacity and allow headroom for the OS. In a heterogeneous lab, test CPU and memory placement separately with single-node requests that fit only the larger node.
+
 For nodes already serving workloads, follow the [rolling maintenance guidance](references/node-maintenance.md#maintaining-an-active-cluster) before applying updates that can restart services or require a reboot.
 
 The preflight and post-deployment validation structure draws on [NVIDIA DeepOps](https://github.com/NVIDIA/deepops/blob/master/skills/deploy-airgapped/SKILL.md).
