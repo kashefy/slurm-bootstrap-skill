@@ -20,6 +20,8 @@ If the operator is still choosing Ubuntu for a fresh lab, evaluate the latest re
 
 The outline describes the intended workflow. Lab-verified procedures will be added as they become available.
 
+For a two-node lab, verify one hostname per node with a two-node job. Drain one idle node with `scontrol update NodeName=<node> State=DRAIN Reason=<reason>`, confirm its state with `sinfo -N`, and submit an unconstrained one-node job to verify it lands on the other node. Resume the drained node with `scontrol update NodeName=<node> State=RESUME`, wait for it to show idle without a no-response flag, and repeat the two-node job.
+
 For labs that simulate resource-based scheduling, choose compute nodes with different vCPU and RAM allocations when planning the lab. Before configuring Slurm, verify the CPU topology and usable memory inside each node. In production, derive each node's configuration from its installed hardware and any limits enforced by its runtime environment. For both environments, keep configured schedulable memory within the detected capacity and allow headroom for the OS. In a heterogeneous lab, test CPU and memory placement separately with single-node requests that fit only the larger node.
 
 For nodes already serving workloads, follow the [rolling maintenance guidance](references/node-maintenance.md#maintaining-an-active-cluster) before applying updates that can restart services or require a reboot.
